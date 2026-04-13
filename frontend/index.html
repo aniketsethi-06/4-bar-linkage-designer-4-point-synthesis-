@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>4-Bar Linkage Designer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h1>4-Bar Linkage Designer (4 Points Synthesis)</h1>
+
+    <div class="main">
+        <div class="workspace">
+            <canvas id="canvas"></canvas>
+
+
+            <div class="info">
+                <p id="error" class="error"></p>
+                <p id="scaleInfo"></p>
+                <p id="triangleInfo"></p>
+            </div>
+
+        </div>
+
+        <div class="controls">
+            <button onclick="generateCandidatePoints()">Choose Points</button>
+            <button onclick="sendPoints()">Generate</button>
+            <button onclick="changePoints()">Change Points</button>
+            <button onclick="reset()">Reset</button>
+
+        </div>
+        <div class="controls">
+            <label for="speed">Speed Control: </label>
+            <input type="range" min="0" max="150" value="50" id="speedSlider">
+        </div>
+
+        <div id="loader" class="loader hidden"></div>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
