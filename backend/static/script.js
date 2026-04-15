@@ -23,7 +23,8 @@ function resizeCanvas() {
     canvas.width = rect.width * dpr;
     canvas.height = rect.height * dpr;
 
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.scale(dpr, dpr);
 }
 
 resizeCanvas();
@@ -135,7 +136,7 @@ function drawCandidatePoints() {
 
     points.forEach(p => {
         ctx.beginPath();
-        ctx.arc(p[0], p[1], 10, 0, Math.PI * 2);
+        ctx.arc(p[0], p[1], 6, 0, Math.PI * 2);
 
         let isSelected = selectedPoints.some(
             sp => sp[0] === p[0] && sp[1] === p[1]
@@ -237,7 +238,7 @@ function sendPoints() {
         return;
     }
 
-    fetch("http://127.0.0.1:8000/generate", {
+    fetch("/generate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ points: selectedPoints })
@@ -391,8 +392,9 @@ function computeViewTransform() {
     let cw = rect.width;
     let ch = rect.height;
 
-    let margin = 0.85;
+    let margin = 0.6;
     viewScale = margin * Math.min(cw / mechWidth, ch / mechHeight);
+    viewScale = Math.min(viewScale, 1.2);
 
     viewOffsetX = (cw - mechWidth * viewScale) / 2 - minX * viewScale;
     viewOffsetY = (ch - mechHeight * viewScale) / 2 - minY * viewScale;
@@ -589,3 +591,6 @@ function showInfo(data) {
         Grashof: ${data.grashof}
     `;
 }
+window.onload = function () {
+    generateCandidatePoints();
+};

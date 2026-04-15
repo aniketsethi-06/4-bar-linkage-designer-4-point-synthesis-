@@ -3,7 +3,8 @@
 
 <head>
     <title>4-Bar Linkage Designer</title>
-    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="/static/style.css">
 </head>
 
 <body>
@@ -14,13 +15,11 @@
         <div class="workspace">
             <canvas id="canvas"></canvas>
 
-
             <div class="info">
                 <p id="error" class="error"></p>
                 <p id="scaleInfo"></p>
                 <p id="triangleInfo"></p>
             </div>
-
         </div>
 
         <div class="controls">
@@ -28,8 +27,8 @@
             <button onclick="sendPoints()">Generate</button>
             <button onclick="changePoints()">Change Points</button>
             <button onclick="reset()">Reset</button>
-
         </div>
+
         <div class="controls">
             <label for="speed">Speed Control: </label>
             <input type="range" min="0" max="150" value="50" id="speedSlider">
@@ -38,7 +37,7 @@
         <div id="loader" class="loader hidden"></div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="/static/script.js"></script>
 
 </body>
 
